@@ -1,6 +1,6 @@
 
 // Wait for the message from the main thread
-onmessage = function(e){
+onmessage = function (e) {
 
     // Make the indivisual params part of the current context
     this.h = e.data[0];
@@ -11,9 +11,9 @@ onmessage = function(e){
     hs = e.data[5];
     data = e.data[6];
     this.alpha = e.data[7];
-    
+
     // The result object has 
-    result = {rgbas: [], rect: []};
+    result = { rgbas: [], rect: [] };
 
 
     // Parallelizable task
@@ -37,11 +37,11 @@ onmessage = function(e){
             b = data[image_index + 2];
             a = (this.alpha * data[image_index + 3]) / 255;
 
-            rgba = 'rgba(' + r +','+ g +','+ b +','+ a + ')';
+            rgba = 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
 
             // Add the values to the result arrays
-            result.rgbas[y/this.pixel].push(rgba);
-            result.rect[y/this.pixel].push([(this.x + x) - hs, (this.y + y) - hs, this.pixel, this.pixel]);
+            result.rgbas[y / this.pixel].push(rgba);
+            result.rect[y / this.pixel].push([(this.x + x) - hs, (this.y + y) - hs, this.pixel, this.pixel]);
         }
     }
 
