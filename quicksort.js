@@ -1,67 +1,67 @@
-	onmessage = function(e) {
-		console.log("Message received from main script.");
+onmessage = function (e) {
+	console.log("Message received from main script.");
 
-		// Implementing three hump camel function
+	// Implementing three hump camel function
 
-		var arr = e.data;
-		console.log(arr);
-		result = quickSort(arr, 0, arr.length - 1);
-		postMessage(result);
-	}
-	
-	function swap(items, firstIndex, secondIndex){
-	    var temp = items[firstIndex];
-	    items[firstIndex] = items[secondIndex];
-	    items[secondIndex] = temp;
-	}
+	var arr = e.data;
+	console.log(arr);
+	result = quickSort(arr, 0, arr.length - 1);
+	postMessage(result);
+}
 
-	function partition(items, left, right) {
+function swap(items, firstIndex, secondIndex) {
+	var temp = items[firstIndex];
+	items[firstIndex] = items[secondIndex];
+	items[secondIndex] = temp;
+}
 
-	    var pivot   = items[Math.floor((right + left) / 2)],
-	        i       = left,
-	        j       = right;
+function partition(items, left, right) {
+
+	var pivot = items[Math.floor((right + left) / 2)],
+		i = left,
+		j = right;
 
 
-	    while (i <= j) {
+	while (i <= j) {
 
-	        while (items[i] < pivot) {
-	            i++;
-	        }
+		while (items[i] < pivot) {
+			i++;
+		}
 
-	        while (items[j] > pivot) {
-	            j--;
-	        }
+		while (items[j] > pivot) {
+			j--;
+		}
 
-	        if (i <= j) {
-	            swap(items, i, j);
-	            i++;
-	            j--;
-	        }
-	    }
-
-	    return i;
+		if (i <= j) {
+			swap(items, i, j);
+			i++;
+			j--;
+		}
 	}
 
-	function quickSort(items, left, right) {
+	return i;
+}
 
-	    var index;
+function quickSort(items, left, right) {
 
-	    if (items.length > 1) {
+	var index;
 
-	        index = partition(items, left, right);
+	if (items.length > 1) {
 
-	        if (left < index - 1) {
-	            quickSort(items, left, index - 1);
-	        }
+		index = partition(items, left, right);
 
-	        if (index < right) {
-	            quickSort(items, index, right);
-	        }
+		if (left < index - 1) {
+			quickSort(items, left, index - 1);
+		}
 
-	    }
+		if (index < right) {
+			quickSort(items, index, right);
+		}
 
-	    return items;
 	}
 
+	return items;
+}
 
-	// first call
+
+// first call
