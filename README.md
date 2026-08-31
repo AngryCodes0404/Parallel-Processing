@@ -26,4 +26,3 @@ This repository contains both parallelized algorithms and tutorials/examples of 
    * THree Hump Camel Function
    * Task Parallelism: Quicksort and Mergesort
    * Pixel Manipulation
-
